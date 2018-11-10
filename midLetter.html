@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Find Middle Character</title>
+</head>
+<body>
+    <script>
+    /************************************************** 
+        Challenge:
+        You are going to be given a word. Your job is to return the middle character of the word. 
+        If the word's length is odd, return the middle character. 
+        If the word's length is even, return the middle 2 characters.
+        #Examples:
+        Kata.getMiddle("test") should return "es"
+        Kata.getMiddle("testing") should return "t"
+        Kata.getMiddle("middle") should return "dd"
+        Kata.getMiddle("A") should return "A"
+        #Input
+        A word (string) of length 0 < str < 1000 
+        (In javascript you may get slightly more than 1000 in some test cases due to an error in the test cases). 
+        You do not need to test for this. This is only here to tell you that you do not need to worry about your solution timing out.
+        #Output
+        The middle character(s) of the word represented as a string.
+    ***************************************************/
+
+    //find the length of the string 
+        //if length is an even number take the left and right #
+        //if length is an odd number take the middle # 
+        //find the index of those positions and return that string
+        //string - 
+    const findMiddle = (string) => {
+        const position = string.length/2;
+        const theMiddleString = '';
+        if (!(string.length % 2)) {
+            theMiddleString += string[position - 1] + string[position];
+        }
+        else {
+            theMiddleString += string[Math.floor(position)];
+        }
+        return theMiddleString
+    }
+    console.log('testing: ', findMiddle('testing'))
+    console.log('test: ', findMiddle('test'))
+    console.log('A: ', findMiddle('A'))
+    console.log('middle: ', findMiddle('middle'))
+    </script>
+</body>
+</html>
