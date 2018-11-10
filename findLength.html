@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Find Length</title>
+</head>
+<body>
+    <script>
+        /*************************************************************************
+        Challenge
+        Using the JavaScript language, have the function RunLength(str) take the str parameter being passed and return a compressed version of the string using the Run-length encoding algorithm...
+        Sample Test Cases
+        Input:"aabbcde"
+
+        Output:"2a2b1c1d1e"
+
+
+        Input:"wwwbbbw"
+
+        Output:"3w3b1w"
+        *************************************************************************/
+        
+
+        //create a storage space 
+        //check each letter in the string
+            //if the letter is not in the storage space
+                //add that letter and add 1 
+            //else if the letter is in the storage space && it's position in the string is next to the same letter 
+                //increase the count
+            //else if the letter is in the storage space && position in the string is not next to the same letter
+                //add that letter and add 1 
+
+        const findLength = (str) => {
+            let letterArray = [];
+            for (let i=0; i<str.length;i++){
+                let lastPosition = letterArray.length
+                if ( letterArray.indexOf(str[i]) === -1 ) {
+                    letterArray.push(1)
+                    letterArray.push(str[i])
+                }
+                else if ( letterArray.indexOf(str[i]) > -1 && str[i] === letterArray[lastPosition - 1] ) {
+                    letterArray[lastPosition - 2] = letterArray[lastPosition - 2] + 1; 
+                }
+                else if ( letterArray.indexOf(str[i]) > -1 && str[i] !== letterArray[lastPosition - 1] ) {
+                    letterArray.push(1)
+                    letterArray.push(str[i])
+                }
+            }
+            return concatArray(letterArray)
+        }
+
+        const concatArray = (letterArray) => {
+            let stringify = '';
+            for (let i=0; i<letterArray.length; i++) {
+                stringify += letterArray[i]
+            }
+            return stringify
+        }
+
+        console.log(`aabbcde: ${findLength('aabbcde')}`)
+        console.log(`wwwbbbw: ${findLength('wwwbbbw')}`)
+
+    </script>
+</body>
+</html>
