@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Find Middle Character</title>
+</head>
+<body>
+    <script>
+    /************************************************** 
+        Challenge:
+        Given a string, find the length of the longest substring without repeating characters.
+        Example 1:
+
+        Input: "abcabcbb"
+        Output: 3 
+        Explanation: The answer is "abc", with the length of 3. 
+        Example 2:
+
+        Input: "bbbbb"
+        Output: 1
+        Explanation: The answer is "b", with the length of 1.
+        Example 3:
+
+        Input: "pwwkew"
+        Output: 3
+        Explanation: The answer is "wke", with the length of 3. 
+        Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+    ***************************************************/
+
+    
+    //create a storage that holds the largest amount (array)
+    //create a storage that holds the current amount (array)
+    //check each letter in the string (loop)
+        //if letter is the same as the next letter or at the end 
+            //split off and add to current storage
+            //if the current storage is larger than the largest amt
+                //replace and empty current storage
+        //if current letter is not the same as the next letter
+            //add to storage 
+    // return the largest amount length
+        
+    function longStringLength(string){
+        let largeAmount = []
+        let currentAmount = [] 
+        for (let i=0; i<string.length; i++) {
+            if ( string[i] === string[i + 1] || string[i + 1] === undefined ) {
+                if ( currentAmount.length === 0 ) {
+                    currentAmount.push(string[i])
+                }
+                else if ( currentAmount.length > largeAmount.length ) {
+                    largeAmount = currentAmount;
+                    currentAmount = []; 
+                }
+            } //if current position's letter is not equal to the next letter and it doesn't exist in the array already                
+            else if ( string[i] !== string[i+1] && currentAmount.indexOf(string[i]) === -1) {
+                currentAmount.push(string[i])
+            }
+        }
+        return largeAmount.length
+    }
+
+    console.log( 'Length of abcabcbb will be: ', longStringLength('abcabcbb') )
+    console.log( 'Length of bbbbb will be: ', longStringLength('bbbbb') )
+    console.log( 'Length of pwwkew will be: ', longStringLength('pwwkew') )
+    </script>
+</body>
+</html>
