@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Find Repeatted Letters</title>
+</head>
+<body>
+    <script>
+        /********************************************************************************
+        Challenge:
+            Write a function that used a string and finds the word with the most number of repeated letters
+            input: 
+                "Hello I am from mississippi"
+            output:
+                'mississippi'
+        *********************************************************************************/
+        
+            function repeatingWord(str) {
+                var arrayObj = [];
+                var splitString = str.split(' ');
+                // this is the array
+                for (var i = 0; i < splitString.length; i++) {
+                    var wordObject = {}; 
+                    wordObject.word = splitString[i];
+                    wordObject.wordMap = {}; 
+                    for (var x = 0; x < wordObject.word.length; x++) {
+                        var letter = wordObject.word[x];
+                        if (wordObject.wordMap[letter]) {
+                        wordObject.wordMap[letter]++;
+                        } else {
+                        wordObject.wordMap[letter] = 1;
+                        }	 
+                }
+                arrayObj.push(wordObject)
+                }
+                    return findMaximumLength(arrayObj);
+                }
+
+            function findMaximumLength(createdArrayObj) {
+                var findMaxValue = 0;
+                var findMaxWord = null;
+                for (var i = 0; i<createdArrayObj.length; i++) {
+                //Look at position 0 of the array
+                    for (key in createdArrayObj[i].wordMap) {
+                    if ( createdArrayObj[i].wordMap[key] > findMaxValue){
+                        findMaxValue = createdArrayObj[i].wordMap[key]
+                        findMaxWord = createdArrayObj[i].word
+                    }
+                    }
+                    //For loop: Look at each letter from the wordMap,
+                    // if letter count is greater than current max value
+                        //replace largest value and max word 
+                }
+            return findMaxWord
+            }
+      
+    console.log( "Hello I am from mississippi:", repeatingWord("Hello I am from mississippi"))
+    </script>
+
+</body>
+</html>
